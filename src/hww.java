@@ -1,13 +1,13 @@
 public class hww {
+    static java.util.Scanner scanner = new java.util.Scanner(System.in);
     public static void main(String[] args) {
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
         int StudentAmount = 0;
         System.out.println("enter the amount of students");
         StudentAmount = scanner.nextInt();
         scanner.nextLine(); // this has to be here for some reason??
         String base[][] = new String[StudentAmount][2];
         System.out.println("would you like to add all students?\nif yes type \"y\" else type \"n\"");
-        if(scanner.nextLine().charAt(0)=='y'){
+        if("y".equals(scanner.nextLine())){
             addall(base);
         } else {
             System.out.println("enter number of students to add or 0 to see the menu");
@@ -25,6 +25,7 @@ public class hww {
             + "[1] <- add a student\n"
             + "[7] <- leave the system\n");
             int command = scanner.nextInt();
+            scanner.nextLine();
             if(command == 1){
                 add(base);
             }
@@ -51,35 +52,36 @@ public class hww {
         }
     }
     static void add(String b[][]){
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        boolean full = true;
         for (int i = 0; i < b.length; i++) {
             if (b[i][0]==null) {
+                full = false;
                 System.out.println("enter the student id:");
                 b[i][0]=scanner.nextLine();
-            if(b[i][0]=="0"){
+            if("0".equals(b[i][0])){
                 System.out.print("id cannot be 0 ");
                 i=i-1;
                 continue;
             }
-                System.out.println("enter the name id:");
+                System.out.println("enter the student name:");
                 b[i][1]=scanner.nextLine();
                 break;
             }
         }
+       if(full){
+        System.out.println("the system is full");
+       } 
     }
     static void addall(String b[][]){
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
-        System.out.println("enter the student ids");
         for (int i = 0; i < b.length; i++) {
+            System.out.println("enter the student id:");
             b[i][0]=scanner.nextLine();
-            if(b[i][0]=="0"){
-                System.out.print("id cannot be 0 ");
+            if("0".equals(b[i][0])){
+                System.out.println("id cannot be 0 ");
                 i=i-1;
                 continue;
             }
-        }
-        System.out.println("now enter the names");
-        for (int i = 0; i < b.length; i++) {
+            System.out.println("enter the student name");
             b[i][1]=scanner.nextLine();
         }
     }
