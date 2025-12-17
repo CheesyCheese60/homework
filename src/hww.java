@@ -26,18 +26,74 @@ public class hww {
             + "[7] <- leave the system\n");
             int command = scanner.nextInt();
             scanner.nextLine();
-            if(command == 1){
-                add(base);
+            switch (command) {
+                case 1:
+                    add(base);
+                    break;
+                case 2:
+                    search(base);
+                    break;
+                case 3:
+                    delete(base);
+                    break;
+                case 7:
+                    return;
+                default:
+                    break;
             }
-            else if(command == 7){
+            if(command==7){
                 break;
-            }
-            else{
-                System.out.println("invalid command");
             }
             view(base);
         }
-   }
+    }
+    static void count(String b[][]){
+        int count = 0;
+        for (int i = 0; i < b.length; i++) {
+            if(b[i][0]==null){
+                continue;
+            }
+            count++;
+        }
+        System.out.println("there are " + count + " students in the system");
+    }
+    static void delete(String b[][]){
+        System.out.println("enter the student id:");
+        String id = scanner.nextLine();
+        boolean found = false;
+        for (int i = 0; i < b.length; i++) {
+            if(b[i][0]==null){
+                continue;
+            }
+            if(id.equals(b[i][0])){
+                b[i][0]=null;
+                b[i][1]=null;
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("student not found");
+        }
+    }
+    static void search(String b[][]){
+        System.out.println("enter the student id:");
+        String id = scanner.nextLine();
+        boolean found = false;
+        for (int i = 0; i < b.length; i++) {
+            if(b[i][0]==null){
+                continue;
+            }
+            if(id.equals(b[i][0])){
+                System.out.println("the student name is: " + b[i][1]);
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("student not found");
+        }
+    }
     static void view(String b[][]){
         int count = 0;
         for (int i = 0; i < b.length; i++) {
