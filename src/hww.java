@@ -12,6 +12,7 @@ public class hww {
         } else {
             System.out.println("enter number of students to add or 0 to see the menu");
             int x = scanner.nextInt();
+            scanner.nextLine();
             if(x!=0){
                 for (int i = 0; i < x; i++) {
                     add(base);
