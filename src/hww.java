@@ -23,6 +23,11 @@ public class hww {
             System.out.println("\t\tStudent Management System\n"
             +"enter of a function to use it\n"
             + "[1] <- add a student\n"
+            + "[2] <- search for a student\n"
+            + "[3] <- delete a student\n"
+            + "[4] <- count the amount of students\n"
+            + "[5] <- view all students\n"
+            + "[6] <- change a student\n"
             + "[7] <- leave the system\n");
             int command = scanner.nextInt();
             scanner.nextLine();
@@ -36,8 +41,17 @@ public class hww {
                 case 3:
                     delete(base);
                     break;
+                case 4:
+                    count(base);
+                    break;
+                case 5:
+                    view(base);
+                    break;
+                case 6:
+                    change(base);
+                    break;
                 case 7:
-                    return;
+                    break;
                 default:
                     break;
             }
@@ -45,6 +59,27 @@ public class hww {
                 break;
             }
             view(base);
+        }
+    }
+    static void change(String b[][]){
+        System.out.println("enter the student id:");
+        String id = scanner.nextLine();
+        boolean found = false;
+        for (int i = 0; i < b.length; i++) {
+            if(b[i][0]==null){
+                continue;
+            }
+            if(id.equals(b[i][0])){
+                System.out.println("enter the new student id:");
+                b[i][0]=scanner.nextLine();
+                System.out.println("enter the new student name:");
+                b[i][1]=scanner.nextLine();
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("student not found");
         }
     }
     static void count(String b[][]){
