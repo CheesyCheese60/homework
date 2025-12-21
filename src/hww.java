@@ -59,7 +59,6 @@ public class hww {
             if(command==7){
                 break;
             }
-            view(base);
         }
     }
     static void change(String b[][]){
